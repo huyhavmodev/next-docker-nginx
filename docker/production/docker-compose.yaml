@@ -1,0 +1,16 @@
+version: '3'
+
+services:
+  web1:
+    build:
+      context: ../../
+      dockerfile: docker/production/Dockerfile
+    hostname: web1
+  nginx:
+    build:
+      context: ../../
+      dockerfile: nginx/Dockerfile
+    ports:
+      - '80:80'
+    depends_on:
+      - web1
